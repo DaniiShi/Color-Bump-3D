@@ -30,7 +30,7 @@ public class LevelGenerator : MonoBehaviour
 
     private List<GameObject> activeChunks = new();
     private Vector3 currentSpawnPosition;
-    private int currentLevelIndex = 0;
+    public MainObjMovement mainObjMovement;
 
     private void Start()
     {
@@ -38,22 +38,22 @@ public class LevelGenerator : MonoBehaviour
 
         // Применяем случайную палитру
         ColorManager.Instance.ApplyRandomPalette();
+        GameManager gameManager = GameManager.Instance;
 
-        GenerateLevel(currentLevelIndex);
+        GenerateLevel(gameManager.currentLevelIndex);
     }
 
     public void GenerateLevel(int levelIndex)
     {
         currentSpawnPosition = startSpawnPosition;
-        currentLevelIndex = levelIndex;
 
         ClearLevel();
 
         LevelData levelData = LevelDatabase.Instance.GetLevel(levelIndex);
 
-        playerController.SetSpeed(levelData.speed ?? baseLevelSpeed);
-        cameraController.SetSpeed(levelData.speed ?? baseLevelSpeed);
-
+        mainObjMovement.SetSpeed(levelData.speed ?? baseLevelSpeed);
+        cameraController.SetCameraRotation(levelData.cameraZRotation ?? 0);
+        GameManager.Instance.currentLevelDifficulty = levelData.difficulty ?? LevelDifficulty.Easy;
 
         foreach (int chunkIndex in levelData.chunks)
         {

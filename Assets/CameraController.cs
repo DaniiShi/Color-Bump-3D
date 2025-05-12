@@ -1,33 +1,16 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using YG;
 
 public class CameraController : MonoBehaviour
 {
     private Camera mainCamera;
-    private float speed;
-
-    public GameManager gameManager;
 
 
-    private void Start()
+    public void SetCameraRotation(float ZRotation)
     {
-    }
-
-    public void SetSpeed(float newSpeed)
-    {
-        speed = newSpeed;
-    }
-
-    public void SetCameraRotation(Quaternion rotation)
-    {
+        // Устанавливаем вращение камеры по оси Z
+        Quaternion rotation = Quaternion.Euler(55, 0, ZRotation);
         transform.rotation = rotation;
     }
 
-    private void FixedUpdate()
-    {
-        if (gameManager.CurrentState == GameState.NotPlaying) return;
-        // Движение камеры вперёд с фиксированной скоростью
-        transform.position += Vector3.forward * speed * Time.fixedDeltaTime;
-    }
 }

@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    private float forwardSpeed = 10f;        // Скорость по Z
-
     private Rigidbody rb;
 
     private Camera mainCamera;
@@ -12,12 +9,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 lastInputPosition = Vector3.zero;
 
     public float sensitivity = .16f, clampDelta = 42f;
-    public float bounds = 5;
-
-
-
-
-
     public GameManager gameManager;
 
 
@@ -31,12 +22,6 @@ public class PlayerController : MonoBehaviour
     {
         if (gameManager.CurrentState == GameState.NotPlaying) return;
         HandleInput();
-    }
-
-    void FixedUpdate()
-    {
-        if (gameManager.CurrentState == GameState.NotPlaying) return;
-        MovePlayer();
     }
 
     private void HandleInput()
@@ -70,26 +55,5 @@ public class PlayerController : MonoBehaviour
         {
             return Input.mousePosition;
         }
-    }
-
-    private void MovePlayer()
-    {
-        // Текущая позиция
-        Vector3 pos = rb.position;
-
-        // Двигаемся вперёд по Z всегда
-        pos.z += forwardSpeed * Time.fixedDeltaTime;
-
-
-        // // Назад по Z не даём скатиться (если нужно)
-        // pos.z = Mathf.Max(pos.z, mainCamera.transform.position.z + 3); // Опционально
-
-        // Обновляем позицию
-        rb.MovePosition(pos);
-    }
-
-    public void SetSpeed(float speed)
-    {
-        forwardSpeed = speed;
     }
 }

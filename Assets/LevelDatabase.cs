@@ -43,16 +43,29 @@ public class LevelDatabase : MonoBehaviour
         return levelSet.levels[index];
     }
 }
+
+
+
 [System.Serializable]
 public class LevelData
 {
     public List<int> chunks;
     public int? speed;
-    public int? cameraRotation;
+    public int? cameraZRotation;
+    public LevelDifficulty? difficulty;
 }
 
 [System.Serializable]
 public class LevelSet
 {
     public List<LevelData> levels;
+}
+
+
+
+public enum LevelDifficulty
+{
+    Easy,
+    Medium,
+    Hard
 }
