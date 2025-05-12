@@ -1,0 +1,3 @@
+Build path: /Users/daniil/Desktop/ColorBumpBuilds/Color Bump 3D
+Build number: 17
+PluginYG version: 2.0032
