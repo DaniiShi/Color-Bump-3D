@@ -52,7 +52,7 @@ public class LevelData
     public List<int> chunks;
     public int? speed;
     public int? cameraZRotation;
-    public LevelDifficulty? difficulty;
+    public string difficulty;
 }
 
 [System.Serializable]
@@ -62,10 +62,28 @@ public class LevelSet
 }
 
 
-
+[System.Serializable]
 public enum LevelDifficulty
 {
     Easy,
     Medium,
     Hard
+}
+
+public static class LevelDifficultyHelper
+{
+    public static LevelDifficulty GetByString(string difficulty)
+    {
+        switch (difficulty)
+        {
+            case "Easy":
+                return LevelDifficulty.Easy;
+            case "Medium":
+                return LevelDifficulty.Medium;
+            case "Hard":
+                return LevelDifficulty.Hard;
+            default:
+                return LevelDifficulty.Easy;
+        }
+    }
 }

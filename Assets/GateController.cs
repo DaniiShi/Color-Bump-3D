@@ -4,17 +4,22 @@ using UnityEngine;
 public class GateController : MonoBehaviour
 {
     public ObjectType objectTypeConvertTo;
+    private Color convertToColor;
 
-    private void Start()
+    private void Awake()
     {
-        GetComponent<Renderer>().material.color = ColorManager.Instance.GetColor(objectTypeConvertTo);
+        print(GetComponent<Renderer>().material.color);
+        convertToColor = GameManager.Instance.currentColorPalette.GetColorByType(objectTypeConvertTo);
+        GetComponent<Renderer>().material.color = convertToColor;
+        print(GetComponent<Renderer>().material.color);
+
     }
     private void OnTriggerEnter(Collider other)
     {
         ColorObject colorChanger = other.GetComponent<ColorObject>();
         if (colorChanger != null)
         {
-            colorChanger.toggleType(objectTypeConvertTo, ColorManager.Instance.GetColor(objectTypeConvertTo));
+            colorChanger.toggleType(objectTypeConvertTo, GameManager.Instance.currentColorPalette.GetColorByType(objectTypeConvertTo));
         }
     }
 }

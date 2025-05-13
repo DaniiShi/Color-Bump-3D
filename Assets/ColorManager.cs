@@ -13,26 +13,8 @@ public class ColorManager : MonoBehaviour
     public Material positiveMaterial;
     public Material negativeMaterial;
 
-    public static ColorManager Instance { get; private set; }
+    public GameManager gameManager;
 
-    private ColorPalette currentPalette;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        // Применяем случайную палитру при старте
-        ApplyRandomPalette();
-    }
 
     /// <summary>
     /// Выбрать случайную палитру и применить
@@ -46,35 +28,28 @@ public class ColorManager : MonoBehaviour
         }
 
         int index = Random.Range(0, colorPalettes.Length);
-        currentPalette = colorPalettes[index];
-        ApplyPalette();
+        ColorPalette selectedPalette = colorPalettes[index];
+        gameManager.currentColorPalette = selectedPalette;
+        ApplyPalette(selectedPalette);
     }
 
-    private void ApplyPalette()
+    private void ApplyPalette(ColorPalette palette)
+
     {
         if (mainCamera != null)
-            mainCamera.backgroundColor = currentPalette.BackgroundColor;
+            mainCamera.backgroundColor = palette.BackgroundColor;
 
         if (roadMaterial != null)
-            roadMaterial.color = currentPalette.RoadColor;
+            roadMaterial.color = palette.RoadColor;
 
         if (positiveMaterial != null)
-            positiveMaterial.color = currentPalette.PositiveColor;
+            positiveMaterial.color = palette.PositiveColor;
 
         if (negativeMaterial != null)
-            negativeMaterial.color = currentPalette.NegativeColor;
+            negativeMaterial.color = palette.NegativeColor;
     }
 
-    public Color GetColor(ObjectType type)
-    {
-        return type switch
-        {
-            ObjectType.Positive => currentPalette.PositiveColor,
-            ObjectType.Negative => currentPalette.NegativeColor,
-            ObjectType.Road => currentPalette.RoadColor,
-            _ => Color.black,
-        };
-    }
+
     public Material GetMaterial(ObjectType type)
     {
         return type switch
@@ -84,11 +59,6 @@ public class ColorManager : MonoBehaviour
             ObjectType.Road => roadMaterial,
             _ => null,
         };
-    }
-
-    public ColorPalette GetCurrentPalette()
-    {
-        return currentPalette;
     }
 }
 
@@ -101,4 +71,16 @@ public struct ColorPalette
     public Color NegativeColor;
     public Color BackgroundColor;
     public Color RoadColor;
+
+
+    public Color GetColorByType(ObjectType type)
+    {
+        return type switch
+        {
+            ObjectType.Positive => this.PositiveColor,
+            ObjectType.Negative => NegativeColor,
+            ObjectType.Road => RoadColor,
+            _ => Color.black,
+        };
+    }
 }
