@@ -32,6 +32,7 @@ public class LevelGenerator : MonoBehaviour
     private Vector3 currentSpawnPosition;
     public MainObjMovement mainObjMovement;
     public ColorManager colorManager;
+    public GameManager gameManager;
 
     private void Start()
     {
@@ -39,7 +40,6 @@ public class LevelGenerator : MonoBehaviour
 
         // Применяем случайную палитру
         colorManager.ApplyRandomPalette();
-        GameManager gameManager = GameManager.Instance;
 
         GenerateLevel(gameManager.currentLevelIndex);
     }

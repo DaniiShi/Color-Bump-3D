@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2827853438427935703}
   - component: {fileID: 8359350154214958071}
+  - component: {fileID: 368790651002861941}
   m_Layer: 0
   m_Name: Part 1 2
   m_TagString: Untagged
@@ -46,6 +47,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b77a9b01717446bb7c478bbf5beebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &368790651002861941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158272646448808987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a62d144775d497b9d6d7a02b783285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  easyObjects: []
+  mediumObjects: []
+  hardObjects: []
 --- !u!1 &3603153727134984638
 GameObject:
   m_ObjectHideFlags: 0
@@ -8824,6 +8840,10 @@ PrefabInstance:
     - target: {fileID: 8819017642479631866, guid: 91b3961c01cb74663bdce82ad9bbd7a0, type: 3}
       propertyPath: m_Name
       value: Road
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819017642479631866, guid: 91b3961c01cb74663bdce82ad9bbd7a0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

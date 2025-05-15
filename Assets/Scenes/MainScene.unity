@@ -318,6 +318,7 @@ MonoBehaviour:
   startSpawnPosition: {x: 0, y: 0, z: 10}
   mainObjMovement: {fileID: 36428425}
   colorManager: {fileID: 28584704}
+  gameManager: {fileID: 721604444}
 --- !u!4 &294283338
 Transform:
   m_ObjectHideFlags: 0

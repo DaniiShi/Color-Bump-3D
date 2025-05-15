@@ -21,6 +21,7 @@ public class ColorManager : MonoBehaviour
     /// </summary>
     public void ApplyRandomPalette()
     {
+        gameManager = GameManager.Instance;
         if (colorPalettes.Length == 0)
         {
             Debug.LogWarning("ColorManager: No palettes assigned.");

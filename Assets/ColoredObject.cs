@@ -15,6 +15,7 @@ public class ColorObject : MonoBehaviour
     public void toggleType(ObjectType type, Color colorTo)
     {
         objectType = isPlayer ? type : ObjectType.Neutral;
+        print(colorTo);
         GetComponent<Renderer>().material.color = colorTo;
     }
     public void setColor(Color color)
