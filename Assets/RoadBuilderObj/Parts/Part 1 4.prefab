@@ -4656,9 +4656,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axis: {x: 1, y: 0, z: 0}
-  amplitude: 2
+  amplitude: 1
   frequency: 1
-  allowedDifficulties: 01000000
+  allowedDifficulties: 0100000002000000
 --- !u!4 &5874052742783071401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5732698256055706269, guid: bd16af4f0528540edb69b8a992519ed1, type: 3}
@@ -9306,9 +9306,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axis: {x: 1, y: 0, z: 0}
-  amplitude: 2
+  amplitude: 1
   frequency: 1
-  allowedDifficulties: 01000000
+  allowedDifficulties: 0100000002000000
 --- !u!1001 &4944174664391554946
 PrefabInstance:
   m_ObjectHideFlags: 0
