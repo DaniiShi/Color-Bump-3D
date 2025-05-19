@@ -9,7 +9,11 @@ public class MainObjMovement : MonoBehaviour
     {
         speed = newSpeed;
     }
-
+    // private void Update()
+    // {
+    //     if (gameManager.CurrentState == GameState.NotPlaying) return;
+    //     transform.position += Vector3.forward * speed * Time.deltaTime;
+    // }
     private void FixedUpdate()
     {
         if (gameManager.CurrentState == GameState.NotPlaying) return;

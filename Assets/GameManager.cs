@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
 
     public ColorPalette currentColorPalette;
 
+    public UIManager uiManager;
+
+
+
     void Awake()
     {
         if (Instance == null)
@@ -37,12 +41,22 @@ public class GameManager : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Time.timeScale = 0f;
+        uiManager.StartState();
         SetGameState(GameState.NotPlaying);
     }
 
     public void SetGameState(GameState newState)
     {
         currentState = newState;
+    }
+
+    public void Finish()
+    {
+        SetGameState(GameState.NotPlaying);
+        // Замедление времени
+        Time.timeScale = 0.5f;
+        uiManager.FinishState();
     }
 
     public GameState CurrentState => currentState;

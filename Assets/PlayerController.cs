@@ -3,14 +3,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
-
     private Camera mainCamera;
-
     private Vector3 lastInputPosition = Vector3.zero;
 
-    public float sensitivity = .16f, clampDelta = 42f;
+    public float sensitivity = 0.16f, clampDelta = 42f;
     public GameManager gameManager;
-
+    private bool gameStarted = false;
 
     void Start()
     {
@@ -20,7 +18,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.CurrentState == GameState.NotPlaying) return;
+        // Ожидаем тапа, если игра ещё не началась
+        if (!gameStarted && Input.GetMouseButtonDown(0))
+        {
+            Time.timeScale = 1f;
+            gameManager.SetGameState(GameState.Playing);
+            gameStarted = true;
+        }
+
+        // Если игра ещё не началась — не обрабатывать движение
+        if (!gameStarted || gameManager.CurrentState == GameState.NotPlaying)
+            return;
+
         HandleInput();
     }
 
@@ -41,9 +50,9 @@ public class PlayerController : MonoBehaviour
 
             Vector3 moveForce = Vector3.ClampMagnitude(vector, clampDelta);
             rb.AddForce(-moveForce * sensitivity - rb.linearVelocity / 5f, ForceMode.VelocityChange);
-
         }
     }
+
     private Vector3 GetInputPosition()
     {
         // Возвращает позицию мыши или касания

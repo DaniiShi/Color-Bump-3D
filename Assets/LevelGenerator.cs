@@ -34,6 +34,10 @@ public class LevelGenerator : MonoBehaviour
     public ColorManager colorManager;
     public GameManager gameManager;
 
+    [Header("Finish")]
+    public GameObject finishPrefab; // Префаб финиша
+    private float finishOffsetZ = 25f; // Можно задать дополнительный отступ, если нужно
+
     private void Start()
     {
         currentSpawnPosition = startSpawnPosition;
@@ -62,6 +66,16 @@ public class LevelGenerator : MonoBehaviour
         foreach (int chunkIndex in levelData.chunks)
         {
             SpawnChunk(chunkIndex);
+        }
+
+        // Вставка финиша в конец уровня
+        if (finishPrefab != null)
+        {
+            Vector3 finishPosition = currentSpawnPosition;
+            finishPosition.z += finishOffsetZ;
+
+            GameObject finish = Instantiate(finishPrefab, finishPosition, Quaternion.identity);
+            activeChunks.Add(finish);
         }
     }
 
