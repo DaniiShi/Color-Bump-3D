@@ -399,9 +399,15 @@ MonoBehaviour:
     length: 15
   - prefab: {fileID: 7739185784804794692, guid: a3733f00495474a09adf3bc7e567dc98, type: 3}
     length: 20
-  - prefab: {fileID: 7889791484630747157, guid: 115926db29149484abe7b4a94ad46459, type: 3}
+  - prefab: {fileID: 7889791484630747157, guid: 1205d01690f774bf59e5b9362a3ece2b, type: 3}
     length: 30
-  - prefab: {fileID: 7889791484630747157, guid: 115926db29149484abe7b4a94ad46459, type: 3}
+  - prefab: {fileID: 3158272646448808987, guid: d48756ba2520e4777a6daa80aed25640, type: 3}
+    length: 15
+  - prefab: {fileID: 3158272646448808987, guid: 31e21355ffe1f4925a83344d99e2d6a3, type: 3}
+    length: 20
+  - prefab: {fileID: 3158272646448808987, guid: 5d3a6647792cc41e1b47276ff688456e, type: 3}
+    length: 25
+  - prefab: {fileID: 3158272646448808987, guid: 529bfdc8bd58b49aba1db7e57b1110ba, type: 3}
     length: 30
   startSpawnPosition: {x: 0, y: 0, z: 10}
   mainObjMovement: {fileID: 36428425}
