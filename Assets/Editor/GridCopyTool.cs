@@ -44,13 +44,14 @@ public class GridCopier : EditorWindow
             return;
         }
 
+        Undo.IncrementCurrentGroup(); // Группа для отката всей операции
+        int undoGroup = Undo.GetCurrentGroup();
+
         var prefabStage = PrefabStageUtility.GetCurrentPrefabStage();
         Scene targetScene = prefabStage != null ? prefabStage.scene : SceneManager.GetActiveScene();
 
         Vector3 basePosition = selected.transform.position;
         Transform parentTransform = selected.transform.parent;
-
-        GameObject lastCopy = null;
 
         for (int y = 0; y < layersY; y++)
         {
@@ -70,7 +71,7 @@ public class GridCopier : EditorWindow
                     }
                     else
                     {
-                        copy = Instantiate(selected);
+                        copy = Object.Instantiate(selected);
                         SceneManager.MoveGameObjectToScene(copy, targetScene);
                     }
 
@@ -80,16 +81,16 @@ public class GridCopier : EditorWindow
                     copy.transform.localScale = selected.transform.localScale;
                     copy.transform.SetParent(parentTransform, true);
 
-                    lastCopy = copy;
+                    // 📌 Регистрируем для Undo
+                    Undo.RegisterCreatedObjectUndo(copy, "Grid Copy");
+
+
                 }
             }
         }
 
-        if (lastCopy != null)
-        {
-            SceneView.lastActiveSceneView.FrameSelected();
-        }
+        Undo.CollapseUndoOperations(undoGroup); // Сворачиваем всё в одну операцию
 
-        Debug.Log($"✅ Сетка {columns}x{layersY}x{rows} создана.");
+        Debug.Log($"✅ Сетка {columns}x{layersY}x{rows} создана с поддержкой Undo.");
     }
 }
