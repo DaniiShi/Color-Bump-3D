@@ -1,8 +1,11 @@
 using UnityEngine;
+
+
+[System.Serializable]
 public enum ObjectType
 {
-    Positive, // Положительный объект (например, ворота для смены цвета)
-    Negative,  // Отрицательный объект (например, препятствие)
+    Positive,
+    Negative,
     Road,
     Neutral
 }
@@ -15,7 +18,6 @@ public class ColorObject : MonoBehaviour
     public void toggleType(ObjectType type, Color colorTo)
     {
         objectType = isPlayer ? type : ObjectType.Neutral;
-        print(colorTo);
         GetComponent<Renderer>().material.color = colorTo;
     }
     public void setColor(Color color)

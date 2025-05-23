@@ -9,14 +9,7 @@ public class ChunkEntry
     public float length = 10f;
 }
 
-[System.Serializable]
-public class LevelPartData
-{
-    public GameObject prefab; // Префаб части уровня
-    public float length; // Длина части уровня по Z
-    public int baseWeight = 1; // Базовый вес
-    public AnimationCurve weightCurve; // Кривая изменения веса от уровня
-}
+
 public class LevelGenerator : MonoBehaviour
 {
     const int baseLevelSpeed = 4;

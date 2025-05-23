@@ -409,6 +409,18 @@ MonoBehaviour:
     length: 25
   - prefab: {fileID: 3158272646448808987, guid: 529bfdc8bd58b49aba1db7e57b1110ba, type: 3}
     length: 30
+  - prefab: {fileID: 3158272646448808987, guid: cc20bb4d104094e3dae6f428238fe8e6, type: 3}
+    length: 10
+  - prefab: {fileID: 3158272646448808987, guid: 6b9a5ac9cc59744688fbb036fdbf32e4, type: 3}
+    length: 5
+  - prefab: {fileID: 3158272646448808987, guid: 27b041df5d11a4e2e9352810d9243b51, type: 3}
+    length: 20
+  - prefab: {fileID: 67534195376771012, guid: dbfe74fc1139145d3b87627b27dcbc00, type: 3}
+    length: 15
+  - prefab: {fileID: 3158272646448808987, guid: d09559f5dad204d5c87d1ae96a4039bb, type: 3}
+    length: 5
+  - prefab: {fileID: 3158272646448808987, guid: f4e703b283d44483ba1e675891f29375, type: 3}
+    length: 10
   startSpawnPosition: {x: 0, y: 0, z: 10}
   mainObjMovement: {fileID: 36428425}
   colorManager: {fileID: 28584704}
